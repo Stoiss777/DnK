@@ -23,7 +23,7 @@ import (
 	"strconv"
 )
 
-type Comix struct {
+type Comic struct {
 	Month string `json:"month"`
 	Num int `json:"num"`
 	Link string `json:"link"`
@@ -63,7 +63,7 @@ func main() {
 				printSyntax()
 				os.Exit(1)
 			}
-			exist, err := downloadComix(num, true)
+			exist, err := downloadComic(num, true)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "error: %v\n", err)
 				os.Exit(2)
@@ -109,16 +109,16 @@ func main() {
 		}
 
 		for _, id := range ids {
-			comix, err := loadComix(fmt.Sprintf(ComixFile, id))
+			comic, err := loadComic(fmt.Sprintf(ComicFile, id))
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "error: %v\n", err)
 				break
 			}
 			fmt.Println()
-			fmt.Printf("TITLE: %s\n", comix.Title)
-			fmt.Printf("URL: " + ComixURL + "\n", comix.Num)
+			fmt.Printf("TITLE: %s\n", comic.Title)
+			fmt.Printf("URL: " + ComicURL + "\n", comic.Num)
 			fmt.Println("----------------------------")
-			fmt.Println(comix.Transcript)
+			fmt.Println(comic.Transcript)
 			fmt.Println()
 		}
 	default:

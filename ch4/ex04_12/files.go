@@ -13,20 +13,20 @@ import (
 	"path/filepath"
 )
 
-const ComixURL = "https://xkcd.com/%d/"
-const ComixJSON = "https://xkcd.com/%d/info.0.json"
-const ComixFile = "storage/%d.json"
-const ComixGlob = "storage/*.json"
-const ComixMaxNumber = 9999
+const ComicURL = "https://xkcd.com/%d/"
+const ComicJSON = "https://xkcd.com/%d/info.0.json"
+const ComicFile = "storage/%d.json"
+const ComicGlob = "storage/*.json"
+const ComicMaxNumber = 9999
 
 
-func loadComix(filename string) (*Comix, error) {
+func loadComic(filename string) (*Comic, error) {
 	data, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
 
-	var encoded Comix
+	var encoded Comic
 	if err := json.Unmarshal(data, &encoded); err != nil {
 		return nil, err
 	}
@@ -35,11 +35,11 @@ func loadComix(filename string) (*Comix, error) {
 }
 
 
-func downloadComix(number int, verbose bool) (bool, error) {
+func downloadComic(number int, verbose bool) (bool, error) {
 	if verbose {
-		fmt.Printf("Comix %d downloading... ", number)
+		fmt.Printf("Comic %d downloading... ", number)
 	}
-	resp, err := http.Get(fmt.Sprintf(ComixJSON, number))
+	resp, err := http.Get(fmt.Sprintf(ComicJSON, number))
 	if err != nil {
 		return false, err
 	}
@@ -54,7 +54,7 @@ func downloadComix(number int, verbose bool) (bool, error) {
 		return false, err
 	}
 
-	if err = os.WriteFile(fmt.Sprintf(ComixFile, number), data, 0666); err != nil {
+	if err = os.WriteFile(fmt.Sprintf(ComicFile, number), data, 0666); err != nil {
 		resp.Body.Close()
 		return false, err
 	}
@@ -70,12 +70,12 @@ func downloadAll(verbose bool) (int, error) {
 	var err error
 	var exist bool
 	var c int = 0
-	for i:=1; i<ComixMaxNumber; i++ {
+	for i:=1; i<ComicMaxNumber; i++ {
 		// xkcd joke
 		if i == 404 {
 			continue
 		}
-		exist, err = downloadComix(i, verbose)
+		exist, err = downloadComic(i, verbose)
 		if err != nil {
 			return c, err
 		}
@@ -92,7 +92,7 @@ func downloadAll(verbose bool) (int, error) {
 
 
 func removeAll() (int, error) {
-    files, err := filepath.Glob(ComixGlob)
+    files, err := filepath.Glob(ComicGlob)
     if err != nil {
         return 0, err
     }

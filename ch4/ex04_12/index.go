@@ -46,7 +46,7 @@ func search(query string, index Index) []int {
 
 
 func buildIndex() (Index, error) {
-	files, err := filepath.Glob(ComixGlob)
+	files, err := filepath.Glob(ComicGlob)
 	if err != nil {
 		return nil, err
 	}
@@ -54,15 +54,15 @@ func buildIndex() (Index, error) {
 	index := make(Index)
 
 	for _, file := range files {
-		comix, err := loadComix(file)
+		comic, err := loadComic(file)
 		if err != nil {
 			return nil, err
 		}
-		for _, word := range tokenize(comix.Title + " " + comix.Transcript) {
+		for _, word := range tokenize(comic.Title + " " + comic.Transcript) {
 			if index[word] == nil {
 				index[word] = make(map[int]struct{})
 			}
-			index[word][comix.Num] = struct{}{}
+			index[word][comic.Num] = struct{}{}
 		}
 	}
 
