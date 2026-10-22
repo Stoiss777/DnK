@@ -62,6 +62,7 @@ func downloadComic(number int, verbose bool) (bool, error) {
 		fmt.Printf("OK.\n")
 	}
 
+	resp.Body.Close()
 	return true, nil
 }
 

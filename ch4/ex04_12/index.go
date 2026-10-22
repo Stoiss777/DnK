@@ -76,7 +76,9 @@ func saveIndex(filename string, index Index) error {
 		return err
 	}
 
-	return gob.NewEncoder(f).Encode(index)
+	err = gob.NewEncoder(f).Encode(index)
+	f.Close()
+	return err
 }
 
 
@@ -91,9 +93,11 @@ func loadIndex(filename string) (Index, error) {
     var index Index
 
     if err := gob.NewDecoder(f).Decode(&index); err != nil {
+    	f.Close()
         return nil, err
     }
 
+    f.Close()
     return index, nil
 }
 
