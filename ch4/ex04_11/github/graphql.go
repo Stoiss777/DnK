@@ -53,6 +53,7 @@ func graphQL(query, vars string) (*http.Response, error) {
 		return nil, fmt.Errorf("GraphQL request failed: %s", resp.Status)
 	}
 
+	resp.Body.Close()
 	return resp, nil
 }
 
@@ -83,6 +84,7 @@ func GetIssueID(params *IssueRequestParams) (string, error) {
 		return "", err
 	}
 
+    resp.Body.Close()
     return result.Data.Repository.Issue.ID, nil
 }
 

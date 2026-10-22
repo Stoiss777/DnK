@@ -109,6 +109,7 @@ func Whoami(accessToken string) (*User, error) {
 		return nil, err
 	}
 
+	resp.Body.Close()
 	return res, nil
 }
 
@@ -151,6 +152,7 @@ func RequestDeviceCode(clientID string) (*DeviceCodeResponse, error) {
 		return nil, err
 	}
 
+	resp.Body.Close()
 	return res, nil
 }
 
@@ -189,6 +191,7 @@ func RequestAccessToken(clientID, deviceCode string) (*AccessTokenResponse, erro
 		return nil, err
 	}
 
+	resp.Body.Close()
 	return res, nil
 }
 

@@ -40,6 +40,7 @@ func GetIssues(params *IssueRequestParams) ([]*Issue, error) {
 		return nil, err
 	}
 
+	resp.Body.Close()
 	return issues, nil
 }
 
@@ -73,6 +74,7 @@ func GetIssue(params *IssueRequestParams) (*Issue, error) {
 		return nil, err
 	}
 
+	resp.Body.Close()
 	return issue, nil
 }
 
@@ -110,6 +112,7 @@ func CreateIssue(params *IssueRequestParams, data *IssueRequestData) (*Issue, er
 		return nil, err
 	}
 
+	resp.Body.Close()
 	return issue, nil
 }
 
@@ -147,6 +150,7 @@ func UpdateIssue(params *IssueRequestParams, data *IssueRequestData) (*Issue, er
 		return nil, err
 	}
 
+	resp.Body.Close()
 	return issue, nil
 }
 
