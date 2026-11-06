@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DnK Book: Exercise 4.14</title>
+</head>
+<body>
+<main>
+    <h1>Repository “{{.Repo}}” of “{{.Owner}}” user</h1>
+
+    <h2>Bugs</h2>
+    <ul>
+        {{range .Bugs}}
+            <li><a href="bugs/{{.Number}}">{{.Title}}</a></li>
+        {{else}}
+            <li class="empty">No bugs found.</li>
+        {{end}}
+    </ul>
+
+    <h2>Milestones</h2>
+    <ul>
+        {{range .Milestones}}
+            <li><a href="milestones/{{.Number}}">{{.Title}}</a></li>
+        {{else}}
+            <li class="empty">No milestones found.</li>
+        {{end}}
+    </ul>
+
+    <h2>Contributors</h2>
+    <ul>
+        {{range .Contributors}}
+            <li><a href="contributors/{{.ID}}">{{.Login}}</a></li>
+        {{else}}
+            <li class="empty">No contributors found.</li>
+        {{end}}
+    </ul>
+</main>
+</body>
+</html>

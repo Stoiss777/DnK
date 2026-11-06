@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>The milestone #{{.Number}}</title>
+    </head>
+    <body>
+        <span><a href="/">&lt; Back to list</a></span>
+        <h1>#{{.Number}} {{.Title}}</h1>
+        <p>{{.Description}}</p>
+        
+        <p>Source <a href="{{.HTMLURL}}" target="_blank">{{.HTMLURL}}</a></p>
+        <div>Author: {{.Creator.Login}}
+    </body>
+</html>

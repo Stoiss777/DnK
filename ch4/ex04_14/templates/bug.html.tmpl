@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>The bug #{{.Number}}</title>
+    </head>
+    <body>
+        <span><a href="/">&lt; Back to list</a></span>
+        <h1>#{{.Number}} {{.Title}}</h1>
+        <p>{{.Body}}</p>
+        
+        <p>Source <a href="{{.HTMLURL}}" target="_blank">{{.HTMLURL}}</a></p>
+        <div>Created at {{.CreatedAt.Format "2 Jan 2006 15:04:05"}}</div>
+        <div>Author: {{.User.Login}}
+    </body>
+</html>
