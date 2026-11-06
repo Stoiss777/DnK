@@ -14,7 +14,7 @@ import (
 )
 
 
-func GetIssues(params *IssueRequestParams) ([]*Issue, error) {
+func GetIssues(params *IssueRequestParams) ([]Issue, error) {
 	req, err := http.NewRequest(
 		http.MethodGet,
 		fmt.Sprintf(GetIssuesURL, params.Owner, params.Repo),
@@ -34,7 +34,7 @@ func GetIssues(params *IssueRequestParams) ([]*Issue, error) {
 		return nil, fmt.Errorf("Request failed: %s\n", resp.Status)
 	}
 
-	var issues []*Issue
+	var issues []Issue
 	if err := json.NewDecoder(resp.Body).Decode(&issues); err != nil {
 		resp.Body.Close()
 		return nil, err

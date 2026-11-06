@@ -1,8 +1,8 @@
 /**
  * The authorization functions.
  * 
- * - Client ID must be stored in ".client_id" file in the app directory.
- * - The authorization token is saved in the "token" file.
+ * - Client ID must be stored in ".client_id" file in the app directory manually.
+ * - The authorization token is being saved in the ".token" file in the app directory.
  * 
  * Github manual:
  * https://docs.github.com/en/apps/creating-github-apps/writing-code-for-a-github-app/building-a-cli-with-a-github-app

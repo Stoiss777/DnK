@@ -63,7 +63,7 @@ func main() {
 				os.Exit(3)
 			}
 			for _, issue := range issues {
-				printIssueHeader(issue)
+				printIssueHeader(&issue)
 			}			
 		} else {
 			issue, err := github.GetIssue(params)
