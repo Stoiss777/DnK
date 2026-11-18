@@ -1,0 +1,5 @@
+module gopl.io/ch5/findlinks
+
+go 1.27.4
+
+require golang.org/x/net v0.62.0
