@@ -28,7 +28,7 @@ func walk(tag string, n *html.Node) {
 	if n.Type == html.ElementNode {
 		tag = n.Data
 	} else if n.Type == html.TextNode {
-		if (tag != "script" && tag != "noscript" && tag != "style") {
+		if tag != "script" && tag != "noscript" && tag != "style" {
 			text := strings.TrimSpace(n.Data)
 			// Do not show nodes with spaces only
 			if text != "" {
